@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "unknown"
+author: "dimas"
+
+# support markdown & html tags
+description: |
+  Unknown Challenge
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{unknown_1829417250123854}"
+
+provide: "./release"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 3000
+    enableTrafficCapture: false
+
+scripts:
+    start: cd challenge && docker build -t {{.slug}} .

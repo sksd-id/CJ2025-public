@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "js-validator"
+author: "ryuk"
+
+# support markdown & html tags
+description: |
+  Nothing special, just another crackme challenge
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{nw.js_fl4g_ch3ck3r_Ch4lLeNG3_4_u}"
+
+provide: "./dist"

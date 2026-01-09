@@ -1,0 +1,12 @@
+{
+  "name": "report-service",
+  "version": "1.0.0",
+  "description": "Report service behind Caddy at /report",
+  "main": "server.js",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "latest"
+  }
+}

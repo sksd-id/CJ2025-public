@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "spushcode"
+author: "zafirr"
+
+# support markdown & html tags
+description: |
+  Push and Pull and Call 
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ2025{6ff0ccf9403824e463c179984ec9955664f215ed4d7da476897f4ac51312655d}"
+
+provide: "./release"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 9999
+    enableTrafficCapture: false
+
+scripts:
+    start: cd challenge && docker build -t {{.slug}} .

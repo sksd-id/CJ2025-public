@@ -1,0 +1,24 @@
+diff -ur linux-6.12.61/arch/x86/include/asm/elf.h linux-6.12.61_modified/arch/x86/include/asm/elf.h
+--- linux-6.12.61/arch/x86/include/asm/elf.h	2025-12-06 21:25:03.000000000 +0000
++++ linux-6.12.61_modified/arch/x86/include/asm/elf.h	2025-12-08 07:38:54.971326459 +0000
+@@ -236,7 +236,7 @@
+  * space open for things that want to use the area for 32-bit pointers.
+  */
+ #define ELF_ET_DYN_BASE		(mmap_is_ia32() ? 0x000400000UL : \
+-						  (DEFAULT_MAP_WINDOW / 3 * 2))
++						  (1UL << 52))
+ 
+ /* This yields a mask that user programs can use to figure out what
+    instruction set this CPU supports.  This could be done in user space,
+diff -ur linux-6.12.61/arch/x86/mm/mmap.c linux-6.12.61_modified/arch/x86/mm/mmap.c
+--- linux-6.12.61/arch/x86/mm/mmap.c	2025-12-06 21:25:03.000000000 +0000
++++ linux-6.12.61_modified/arch/x86/mm/mmap.c	2025-12-08 06:41:05.718179827 +0000
+@@ -134,7 +134,7 @@
+ 		set_bit(MMF_TOPDOWN, &mm->flags);
+ 
+ 	arch_pick_mmap_base(&mm->mmap_base, &mm->mmap_legacy_base,
+-			arch_rnd(mmap64_rnd_bits), task_size_64bit(0),
++			arch_rnd(mmap64_rnd_bits), task_size_64bit(1),
+ 			rlim_stack);
+ 
+ #ifdef CONFIG_HAVE_ARCH_COMPAT_MMAP_BASES

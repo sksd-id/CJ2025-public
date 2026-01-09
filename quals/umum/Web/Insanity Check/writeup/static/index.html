@@ -1,0 +1,37 @@
+<script>
+    const TARGET = "{{TARGET}}"
+    const NOTES = JSON.parse('{{NOTES}}')
+    const HOME = "/workspace/home"
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    (async () => {
+        (async () => {
+            const w = open(TARGET + NOTES.css1, "_blank")
+            await sleep(250)
+            w.location = TARGET + HOME
+        })();
+        await sleep(250);
+        (async () => {
+            const w2 = open(TARGET + NOTES.css2, "_blank")
+            await sleep(250)
+            w2.location = TARGET + HOME
+        })();
+        await sleep(250);
+        (async () => {
+            const w3 = open(TARGET + NOTES.css3, "_blank")
+            await sleep(250)
+            w3.location = TARGET + HOME
+        })();
+        await sleep(250)
+        (async () => {
+            const w4 = open(TARGET + NOTES.css4, "_blank")
+            await sleep(250)
+            w4.location = TARGET + HOME
+        })();
+        await sleep(250)
+        (async () => {
+            const w5 = open(TARGET + NOTES.css5, "_blank")
+            await sleep(250)
+            w5.location = TARGET + "/notes/dashboard"
+        })();
+    })()
+</script>

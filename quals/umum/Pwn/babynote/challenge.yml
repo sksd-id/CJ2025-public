@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "babynote"
+author: "linz"
+
+# support markdown & html tags
+description: |
+  Welcome to BabyNote! Your notes, our responsibility ;)
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{2_head_is_better_than_one_but_my_ogre_magi_or_jakiro_teammate_sodumb_LINZ_IS_HERE}"
+
+provide: "./dist"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 13373
+    enableTrafficCapture: false
+
+scripts:
+    start: cd src && docker build -t {{.slug}} .

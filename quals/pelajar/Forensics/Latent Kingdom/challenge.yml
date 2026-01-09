@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Latent Kingdom"
+author: "aseng & kangwijen"
+
+# support markdown & html tags
+description: |
+  CloudServe is a PaaS platform startup that hosts a static marketing site on AWS. One day their site was attacked by an attacker. Your job is to reconstruct what happened end-to-end by answering 15 investigation questions.
+
+  These questions can be answered through remote connection.
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ2025{yeah_never_push_your_env_files_to_prod}"
+
+provide: "./dist"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 31337
+    enableTrafficCapture: false
+
+scripts:
+    start: cd challenge && docker build -t {{.slug}} .

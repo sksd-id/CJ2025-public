@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container">
+            <div class="page-title">
+                <div>
+                    <p class="eyebrow">Welcome back</p>
+                    <h1>Dashboard</h1>
+                    <p class="lede">Signed in as <strong><%= user.email %></strong> (<%= user.role %>).</p>
+                </div>
+            </div>
+
+            <%- include('partials/flash', { flash }) %>
+
+            <div class="grid">
+                <section class="card">
+                    <h3>Upload a file</h3>
+                    <p class="muted">Max 2MB. Allowed: png, jpg, jpeg, pdf, txt.</p>
+                    <div id="upload-status"></div>
+                    <form class="form" id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
+                        <input type="file" name="file" required />
+                        <button type="submit" class="pill" id="upload-submit">Upload</button>
+                    </form>
+                </section>
+
+                <section class="card">
+                    <h3>Your recent uploads</h3>
+                    <% if (!uploads || uploads.length === 0) { %>
+                        <p class="muted">No uploads yet.</p>
+                    <% } else { %>
+                        <ul class="list">
+                            <% uploads.forEach((upload) => { %>
+                                <li data-file-src="/files/<%= upload.stored_name %>">
+                                    <div>
+                                        <strong><%= upload.original_name %></strong>
+                                        <p class="muted">Stored as <code><%= upload.stored_name %></code></p>
+                                    </div>
+                                    <div class="viewer"></div>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </section>
+            </div>
+        </main>
+        <script>
+            const uploadForm = document.getElementById('upload-form');
+            const uploadStatus = document.getElementById('upload-status');
+            const uploadSubmit = document.getElementById('upload-submit');
+
+            const parseJsonSafe = async (response) => {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) {
+                    try {
+                        return await response.json();
+                    } catch (_err) {
+                        return {};
+                    }
+                }
+                return {};
+            };
+
+            function showUploadMessage(message, type = 'info') {
+                uploadStatus.innerHTML = '';
+                if (!message) return;
+                const div = document.createElement('div');
+                div.className = `flash ${type === 'error' ? 'error' : 'success'}`;
+                div.textContent = message;
+                uploadStatus.appendChild(div);
+            }
+
+            uploadForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                showUploadMessage('');
+                uploadSubmit.disabled = true;
+                try {
+                    const formData = new FormData(uploadForm);
+                    const response = await fetch('/upload', {
+                        method: 'POST',
+                        headers: { Accept: 'application/json' },
+                        body: formData,
+                    });
+                    const data = await parseJsonSafe(response);
+                    if (!response.ok || !data.ok) {
+                        if (response.redirected && response.url) {
+                            window.location.assign(response.url);
+                            return;
+                        }
+                        if (response.status === 401 || response.status === 403) {
+                            window.location.assign('/login');
+                            return;
+                        }
+                        showUploadMessage(data.error || 'Upload failed.', 'error');
+                        return;
+                    }
+                    showUploadMessage(data.message || 'Uploaded!', 'success');
+                    setTimeout(() => window.location.reload(), 500);
+                } catch (_err) {
+                    showUploadMessage('Network error. Please try again.', 'error');
+                } finally {
+                    uploadSubmit.disabled = false;
+                }
+            });
+
+            // Render iframes for uploaded files via JS
+            document.querySelectorAll('[data-file-src]').forEach((item) => {
+                const src = item.dataset.fileSrc;
+                const viewer = item.querySelector('.viewer');
+                if (!viewer || !src) return;
+                const frame = document.createElement('iframe');
+                frame.src = src;
+                frame.loading = 'lazy';
+                frame.referrerPolicy = 'no-referrer';
+                frame.setAttribute('sandbox', 'allow-scripts');
+                frame.className = 'file-iframe';
+                viewer.appendChild(frame);
+            });
+        </script>
+    </body>
+</html>

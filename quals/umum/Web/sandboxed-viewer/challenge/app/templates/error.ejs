@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container narrow">
+            <div class="card">
+                <h1><%= title %></h1>
+                <p class="lede"><%= message %></p>
+                <a class="pill" href="/">Return home</a>
+            </div>
+        </main>
+    </body>
+</html>

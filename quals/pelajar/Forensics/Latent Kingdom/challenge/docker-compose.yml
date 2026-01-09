@@ -1,0 +1,11 @@
+services:
+  loschen-checker:
+    build: .
+    restart: always
+    ports:
+      - "31337:31337"      
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

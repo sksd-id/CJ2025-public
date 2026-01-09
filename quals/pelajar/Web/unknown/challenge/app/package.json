@@ -1,0 +1,9 @@
+{
+  "name": "my-app",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  }
+}

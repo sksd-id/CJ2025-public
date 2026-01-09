@@ -1,0 +1,11 @@
+services:
+  unorthone-checker:
+    build: .
+    restart: always
+    ports:
+      - "5111:5111"      
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

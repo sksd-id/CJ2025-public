@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "insanity-check"
+author: "dimas"
+
+# support markdown & html tags
+description: |
+  Insanity Check Challenge
+
+  Start challenge from: https://{{.host}}/{{.slug}}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{0ne_sho0t_0n3_k1ll}"
+
+provide: "./release"
+
+dashboard:
+  type: "compose"
+  config: "./challenge/docker-compose.yaml"

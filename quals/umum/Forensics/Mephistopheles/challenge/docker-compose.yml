@@ -1,0 +1,11 @@
+services:
+  mephisto-checker:
+    build: .
+    restart: always
+    ports:
+      - "5113:5113"      
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

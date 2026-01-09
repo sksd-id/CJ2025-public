@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "baby-rop"
+author: "zafirr"
+
+# support markdown & html tags
+description: |
+  Baby challenge is the hardest challenge!
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ2025{643d58ac99f01b47bc06f7ff9e0e8facec22489303aa24060a32d2969af5d97d}"
+
+provide: "./release"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 9999
+    enableTrafficCapture: false
+
+scripts:
+    start: cd challenge && docker build -t {{.slug}} .

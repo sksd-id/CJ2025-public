@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "dior"
+author: "vidner"
+
+# support markdown & html tags
+description: |
+  https://dlang.org/download.html
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{christian-dior-dior_1M-UP-IN-ALL-THE-5TORE5_rip-pop-smoke!!}"
+
+provide: "./release"

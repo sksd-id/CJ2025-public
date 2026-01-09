@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./apache2:/etc/apache2/conf-enabled:ro
+      - ./files:/files
+    env_file:
+      - .env
+  bot:
+    build: ./bot
+    env_file:
+      - .env
+  caddy:
+    image: caddy:alpine
+    depends_on:
+      - web
+      - bot
+    ports:
+      - "2049:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro

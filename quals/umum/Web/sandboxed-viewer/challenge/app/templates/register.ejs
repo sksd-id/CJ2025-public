@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container narrow">
+            <h1>Create account</h1>
+            <p class="lede">Join to upload files and access the dashboard.</p>
+            <%- include('partials/flash', { flash }) %>
+            <div id="register-error">
+                <% if (error) { %>
+                    <div class="flash error"><%= error %></div>
+                <% } %>
+            </div>
+            <form class="card form" id="register-form" method="POST" action="/register">
+                <label>Email
+                    <input type="email" name="email" placeholder="you@example.com" required />
+                </label>
+                <label>Password
+                    <input type="password" name="password" placeholder="••••••••" required />
+                </label>
+                <button type="submit" class="pill" id="register-submit">Create account</button>
+                <p class="muted">Already registered? <a href="/login">Log in</a>.</p>
+            </form>
+        </main>
+        <script>
+            const registerForm = document.getElementById('register-form');
+            const registerError = document.getElementById('register-error');
+            const registerSubmit = document.getElementById('register-submit');
+
+            const parseJsonSafe = async (response) => {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) {
+                    try {
+                        return await response.json();
+                    } catch (_err) {
+                        return {};
+                    }
+                }
+                return {};
+            };
+
+            function showRegisterError(message) {
+                registerError.innerHTML = '';
+                if (!message) return;
+                const div = document.createElement('div');
+                div.className = 'flash error';
+                div.textContent = message;
+                registerError.appendChild(div);
+            }
+
+            registerForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                showRegisterError('');
+                registerSubmit.disabled = true;
+                try {
+                    const formData = new FormData(registerForm);
+                    const payload = {
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                    };
+                    const response = await fetch('/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    const data = await parseJsonSafe(response);
+                    if (!response.ok || !data.ok) {
+                        if (response.redirected && response.url) {
+                            window.location.assign(response.url);
+                            return;
+                        }
+                        if (response.status === 401) {
+                            window.location.assign('/login');
+                            return;
+                        }
+                        showRegisterError(data.error || 'Unable to register.');
+                        return;
+                    }
+                    window.location.assign('/dashboard');
+                } catch (err) {
+                    showRegisterError('Network error. Please try again.');
+                } finally {
+                    registerSubmit.disabled = false;
+                }
+            });
+        </script>
+    </body>
+</html>

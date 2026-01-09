@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "5-lpt"
+author: "zafirr"
+
+# support markdown & html tags
+description: |
+  GIVE ME 5 LIFE PRO TIPS TO BECOME THE BEST PWNER. ONE MORE THAN 4 LIFE PRO TIPS!
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ2025{8a42cca13925bb0f27d06d81b942ba44814971416f7ae6556afd8a36a6959793}"
+
+provide: "./release"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 9999
+    enableTrafficCapture: false
+
+scripts:
+    start: cd challenge && docker build -t {{.slug}} .

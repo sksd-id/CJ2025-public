@@ -1,0 +1,8 @@
+services:
+  cyberjawara:
+    container_name: spushcode 
+    build: 
+      context: .
+    restart: always
+    ports:
+      - "11003:9999"

@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  cyberjawara:
+    container_name: mongkotoid
+    restart: always
+    build:
+      context: .
+    working_dir: /home/pwn
+    ports:
+      - "10015:8080" # exposed:local
+    read_only: false    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

@@ -1,0 +1,15 @@
+services:
+  asis:
+    container_name: babynote
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 13373:13373
+    restart:
+      always 
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

@@ -1,0 +1,11 @@
+services:
+  badopsec-checker:
+    build: .
+    restart: always
+    ports:
+      - "5112:5112"      
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

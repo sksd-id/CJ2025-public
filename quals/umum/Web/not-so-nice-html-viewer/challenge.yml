@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "not-so-nice-html-viewer"
+author: "nyxmare"
+
+# support markdown & html tags
+description: |
+  Not really nice, but i did my best
+
+  Start challenge from: https://{{.host}}/{{.slug}}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{not_really_the_best_html_viewer_but_hope_you_had_fun_8d8a7ca532be87bc8ea7e47466448459}"
+
+provide: "./dist"
+
+dashboard:
+  type: "compose"
+  config: "./challenge/docker-compose.yaml"

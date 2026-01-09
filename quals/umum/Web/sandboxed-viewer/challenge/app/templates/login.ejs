@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container narrow">
+            <h1>Log in</h1>
+            <p class="lede">Access your dashboard to upload and review files.</p>
+            <%- include('partials/flash', { flash }) %>
+            <div id="login-error">
+                <% if (error) { %>
+                    <div class="flash error"><%= error %></div>
+                <% } %>
+            </div>
+            <form class="card form" id="login-form" method="POST" action="/login">
+                <label>Email
+                    <input type="email" name="email" placeholder="you@example.com" required />
+                </label>
+                <label>Password
+                    <input type="password" name="password" placeholder="••••••••" required />
+                </label>
+                <button type="submit" class="pill" id="login-submit">Log in</button>
+                <p class="muted">No account yet? <a href="/register">Register here</a>.</p>
+            </form>
+        </main>
+        <script>
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            const loginSubmit = document.getElementById('login-submit');
+
+            const parseJsonSafe = async (response) => {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) {
+                    try {
+                        return await response.json();
+                    } catch (_err) {
+                        return {};
+                    }
+                }
+                return {};
+            };
+
+            function showLoginError(message) {
+                loginError.innerHTML = '';
+                if (!message) return;
+                const div = document.createElement('div');
+                div.className = 'flash error';
+                div.textContent = message;
+                loginError.appendChild(div);
+            }
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                showLoginError('');
+                loginSubmit.disabled = true;
+                try {
+                    const formData = new FormData(loginForm);
+                    const payload = {
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                    };
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    const data = await parseJsonSafe(response);
+                    if (!response.ok || !data.ok) {
+                        if (response.redirected && response.url) {
+                            window.location.assign(response.url);
+                            return;
+                        }
+                        if (response.status === 401) {
+                            window.location.assign('/login');
+                            return;
+                        }
+                        showLoginError(data.error || 'Unable to log in.');
+                        return;
+                    }
+                    window.location.assign('/dashboard');
+                } catch (err) {
+                    showLoginError('Network error. Please try again.');
+                } finally {
+                    loginSubmit.disabled = false;
+                }
+            });
+        </script>
+    </body>
+</html>

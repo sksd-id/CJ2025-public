@@ -1,0 +1,13 @@
+services:
+  cyberjawara:
+    container_name: baby_rop 
+    build: 
+      context: .
+    restart: always
+    ports:
+      - "11001:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

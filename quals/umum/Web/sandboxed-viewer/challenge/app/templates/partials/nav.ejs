@@ -1,0 +1,55 @@
+<header class="topbar">
+    <div class="brand">
+        <span class="dot"></span>
+        <a href="/" aria-label="Home">Sandboxed Viewer</a>
+    </div>
+    <nav>
+        <% if (user) { %>
+            <a href="/dashboard">Dashboard</a>
+            <% if (user.role === 'admin') { %>
+                <a href="/admin">Admin</a>
+            <% } %>
+            <form id="logout-form" action="/logout" method="POST">
+                <button type="submit" class="ghost">Logout</button>
+            </form>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a class="pill" href="/register">Create account</a>
+        <% } %>
+    </nav>
+</header>
+<script>
+    const logoutForm = document.getElementById('logout-form');
+    if (logoutForm) {
+        logoutForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch('/logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: '{}',
+                });
+                const contentType = response.headers.get('content-type') || '';
+                const data =
+                    contentType.includes('application/json')
+                        ? await response.json().catch(() => ({}))
+                        : {};
+                if (!response.ok || !data.ok) {
+                    if (response.redirected && response.url) {
+                        window.location.assign(response.url);
+                        return;
+                    }
+                    if (response.status === 401) {
+                        window.location.assign('/login');
+                        return;
+                    }
+                    alert(data.error || 'Logout failed.');
+                    return;
+                }
+                window.location.assign('/login');
+            } catch (_err) {
+                alert('Network error. Please try again.');
+            }
+        });
+    }
+</script>

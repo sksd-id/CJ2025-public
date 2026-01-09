@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container">
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">Secure sandbox</p>
+                    <div class="actions">
+                        <a class="pill" href="/register">Create account</a>
+                        <a class="ghost" href="/login">Log in</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

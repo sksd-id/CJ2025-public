@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/static/styles.css" />
+        <script src="/static/Skope.min.js"></script>
+        <script>
+            window.skope = new Skope();
+            window.skope.init();
+        </script>
+    </head>
+    <body>
+        <%- include('partials/nav', { user }) %>
+        <main class="container">
+            <div class="page-title">
+                <div>
+                    <p class="eyebrow">Admin</p>
+                    <h1>Control panel</h1>
+                    <p class="lede">Review users and recent uploads.</p>
+                </div>
+                <div class="badge accent">Admin mode</div>
+            </div>
+
+            <div class="grid two">
+                <section class="card">
+                    <h3>Users</h3>
+                    <% if (!users || users.length === 0) { %>
+                        <p class="muted">No users yet.</p>
+                    <% } else { %>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Created</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach((u) => { %>
+                                    <tr>
+                                        <td><%= u.email %></td>
+                                        <td><span class="tag"><%= u.role %></span></td>
+                                        <td><%= u.created_at %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } %>
+                </section>
+
+                <section class="card">
+                    <h3>Recent uploads</h3>
+                    <% if (!uploads || uploads.length === 0) { %>
+                        <p class="muted">No uploads yet.</p>
+                    <% } else { %>
+                        <ul class="list">
+                            <% uploads.forEach((upload) => { %>
+                                <li data-file-src="/files/<%= upload.stored_name %>">
+                                    <div>
+                                        <strong><%= upload.original_name %></strong>
+                                        <p class="muted"><%= upload.owner_email || 'Unknown' %> • <%= upload.created_at %></p>
+                                    </div>
+                                    <div class="viewer"></div>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </section>
+            </div>
+        </main>
+        <script>
+            document.querySelectorAll('[data-file-src]').forEach((item) => {
+                const src = item.dataset.fileSrc;
+                const viewer = item.querySelector('.viewer');
+                if (!viewer || !src) return;
+                const frame = document.createElement('iframe');
+                frame.src = src;
+                frame.loading = 'lazy';
+                frame.referrerPolicy = 'no-referrer';
+                frame.setAttribute('sandbox', 'allow-scripts');
+                frame.className = 'file-iframe';
+                viewer.appendChild(frame);
+            });
+        </script>
+        <div skope s-detached>
+            <script type="skopejs"><%=js%></script>
+        </div>
+    </body>
+</html>

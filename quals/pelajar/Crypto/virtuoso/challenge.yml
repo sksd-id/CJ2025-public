@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "virtuoso"
+author: "merricx"
+
+# support markdown & html tags
+description: |
+  Ticket Maestro from Cryptohack was too easy. So, I've updated the challenge such that you cannot even buy a ticket. Can you still solve it?
+
+  Start challenge from: https://{{.host}}/{{.slug}}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{even_zer0_kn0wledge_pr00f_can_still_be_f00led_with_zer00000}"
+
+provide: "./release"
+
+dashboard:
+  type: "compose"
+  config: "./challenge/docker-compose.yml"

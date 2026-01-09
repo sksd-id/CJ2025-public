@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "gosecret"
+author: "ryuk"
+
+# support markdown & html tags
+description: |
+  Tools to make your life easier when hunting for secrets
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{h1dd3n_1n_pl4ins1Gh7?_b9f899891a4c7b2d152ad6e5c680c8b2}"
+
+provide: "./dist"

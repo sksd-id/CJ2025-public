@@ -1,0 +1,13 @@
+services:
+  cyberjawara:
+    container_name: forgotten_flag
+    build: 
+      context: .
+    restart: always
+    ports:
+      - "11002:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M

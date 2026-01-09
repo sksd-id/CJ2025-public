@@ -1,0 +1,79 @@
+version: "3.8"
+
+services:
+  flask-proxy:
+    build:
+      context: ./app/flask-proxy
+      dockerfile: Dockerfile
+    expose:
+      - "5000"
+    env_file:
+      - .env
+    networks:
+      - frontend
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  nodejs-sandbox:
+    build:
+      context: .
+      dockerfile: ./app/nodejs-sandbox/Dockerfile
+    expose:
+      - "3000"
+    env_file:
+      - .env
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  nginx:
+    build:
+      context: ./app/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8489:80"
+    networks:
+      - frontend
+    depends_on:
+      flask-proxy:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80/nginx-health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

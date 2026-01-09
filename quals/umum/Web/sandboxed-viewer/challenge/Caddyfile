@@ -1,0 +1,15 @@
+{
+    admin off
+}
+
+:80 {
+    @report path /report /report/*
+    handle @report {
+        reverse_proxy bot:3001
+    }
+
+    handle {
+        rewrite * {path}?
+        reverse_proxy web:80
+    }
+}

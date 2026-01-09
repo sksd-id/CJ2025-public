@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "mongkotoid"
+author: "linz"
+
+# support markdown & html tags
+description: |
+  I wanna be a mongolotoid so freakin baaad~~
+  throw everything that i never hadd~
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{ai_whippers_is_really_good_bruh_bow_to_mastah_LINZ_IS_HERE}"
+
+provide: "./dist"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 10
+    storageLimit: 1024
+    exposePort: 8080
+    enableTrafficCapture: false
+
+scripts:
+    start: docker build -t {{.slug}} .

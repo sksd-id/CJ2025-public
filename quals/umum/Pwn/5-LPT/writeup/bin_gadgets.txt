@@ -1,0 +1,295 @@
+Gadgets information
+============================================================
+0x00000000000012a3 : adc al, 0x48 ; mov eax, dword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001075 : add al, 0 ; add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001055 : add al, byte ptr [rax] ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000012f7 : add bl, al ; nop dword ptr [rax] ; endbr64 ; jmp 0x1280
+0x000000000000125d : add byte ptr [rax + 0x39], cl ; clc ; je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x00000000000012aa : add byte ptr [rax - 0x7b], cl ; sal byte ptr [rax + rcx - 1], 0xe0 ; nop word ptr [rax + rax] ; ret
+0x0000000000001269 : add byte ptr [rax - 0x7b], cl ; sal byte ptr [rcx + rcx - 1], 0xe0 ; nop dword ptr [rax] ; ret
+0x000000000000100e : add byte ptr [rax - 0x7b], cl ; sal byte ptr [rdx + rax - 1], 0xd0 ; add rsp, 8 ; ret
+0x00000000000012fb : add byte ptr [rax], 0 ; add byte ptr [rax], al ; endbr64 ; jmp 0x1280
+0x0000000000001273 : add byte ptr [rax], 0 ; add byte ptr [rax], al ; ret
+0x00000000000012fc : add byte ptr [rax], al ; add byte ptr [rax], al ; endbr64 ; jmp 0x1280
+0x0000000000001035 : add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1020
+0x000000000000151e : add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1581
+0x00000000000015da : add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x166d
+0x0000000000001274 : add byte ptr [rax], al ; add byte ptr [rax], al ; ret
+0x0000000000001076 : add byte ptr [rax], al ; add cl, ch ; movabs byte ptr [0x1e0ff39066ffffff], al ; cli ; push 5 ; jmp 0x1020
+0x0000000000001056 : add byte ptr [rax], al ; add cl, ch ; ret 0xffff
+0x00000000000012f0 : add byte ptr [rax], al ; add dword ptr [rbp - 0x3d], ebx ; nop dword ptr [rax] ; ret
+0x000000000000125c : add byte ptr [rax], al ; cmp rax, rdi ; je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x00000000000012fe : add byte ptr [rax], al ; endbr64 ; jmp 0x1280
+0x0000000000001037 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001047 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001057 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001067 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001077 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001087 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001097 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010a7 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010b7 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010c7 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010d7 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010e7 : add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010f7 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001107 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001117 : add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001520 : add byte ptr [rax], al ; jmp 0x1581
+0x0000000000001579 : add byte ptr [rax], al ; jmp 0x158d
+0x00000000000015dc : add byte ptr [rax], al ; jmp 0x166d
+0x000000000000102a : add byte ptr [rax], al ; nop dword ptr [rax] ; endbr64 ; push 0 ; jmp 0x1020
+0x0000000000001276 : add byte ptr [rax], al ; ret
+0x00000000000012b6 : add byte ptr [rax], al ; ret
+0x000000000000100d : add byte ptr [rax], al ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001268 : add byte ptr [rax], al ; test rax, rax ; je 0x1278 ; jmp rax
+0x00000000000012a9 : add byte ptr [rax], al ; test rax, rax ; je 0x12b8 ; jmp rax
+0x00000000000012b5 : add byte ptr [rax], r8b ; ret
+0x00000000000012f1 : add byte ptr [rcx], al ; pop rbp ; ret
+0x0000000000001078 : add cl, ch ; movabs byte ptr [0x1e0ff39066ffffff], al ; cli ; push 5 ; jmp 0x1020
+0x0000000000001058 : add cl, ch ; ret 0xffff
+0x0000000000001045 : add dword ptr [rax], eax ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000012f2 : add dword ptr [rbp - 0x3d], ebx ; nop dword ptr [rax] ; ret
+0x000000000000157d : add dword ptr [rbp - 4], 1 ; mov eax, dword ptr [rbp - 0x1c] ; sub eax, 1 ; cmp dword ptr [rbp - 4], eax ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001580 : add dword ptr [rbx - 0x177c1bbb], ecx ; add dword ptr [rcx], edi ; cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001586 : add dword ptr [rcx], edi ; cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x00000000000012a6 : add eax, 0x2d45 ; test rax, rax ; je 0x12b8 ; jmp rax
+0x00000000000012ed : add eax, 0x2d55 ; add dword ptr [rbp - 0x3d], ebx ; nop dword ptr [rax] ; ret
+0x0000000000001265 : add eax, 0x2d76 ; test rax, rax ; je 0x1278 ; jmp rax
+0x000000000000100a : add eax, 0x2fd9 ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001500 : add eax, 0xfffc8ae8 ; dec ecx ; ret
+0x0000000000001065 : add eax, dword ptr [rax] ; add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001576 : add eax, edx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x000000000000129d : add esi, eax ; sar rsi, 1 ; je 0x12b8 ; mov rax, qword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001017 : add esp, 8 ; ret
+0x000000000000168d : add esp, 8 ; ret
+0x0000000000001575 : add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x0000000000001016 : add rsp, 8 ; ret
+0x000000000000168c : add rsp, 8 ; ret
+0x0000000000001513 : and byte ptr [rax - 0x77], cl ; jge 0x1500 ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001027 : and eax, 0x2f2c ; nop dword ptr [rax] ; endbr64 ; push 0 ; jmp 0x1020
+0x0000000000001419 : call qword ptr [rax + 0xff3c3c9]
+0x00000000000014f0 : call qword ptr [rax - 0x7ba74b8]
+0x0000000000001014 : call rax
+0x0000000000001260 : clc ; je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x000000000000151d : cld ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1581
+0x000000000000151c : cld ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1581
+0x000000000000157f : cld ; add dword ptr [rbx - 0x177c1bbb], ecx ; add dword ptr [rcx], edi ; cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x000000000000157e : cld ; add dword ptr [rbx - 0x177c1bbb], ecx ; add dword ptr [rcx], edi ; cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001589 : cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001588 : cld ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x000000000000156d : cld ; movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x000000000000156c : cld ; movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x0000000000001303 : cli ; jmp 0x1280
+0x0000000000001033 : cli ; push 0 ; jmp 0x1020
+0x00000000000010d3 : cli ; push 0xa ; jmp 0x1020
+0x00000000000010e3 : cli ; push 0xb ; jmp 0x1020
+0x00000000000010f3 : cli ; push 0xc ; jmp 0x1020
+0x0000000000001103 : cli ; push 0xd ; jmp 0x1020
+0x0000000000001113 : cli ; push 0xe ; jmp 0x1020
+0x0000000000001043 : cli ; push 1 ; jmp 0x1020
+0x0000000000001053 : cli ; push 2 ; jmp 0x1020
+0x0000000000001063 : cli ; push 3 ; jmp 0x1020
+0x0000000000001073 : cli ; push 4 ; jmp 0x1020
+0x0000000000001083 : cli ; push 5 ; jmp 0x1020
+0x0000000000001093 : cli ; push 6 ; jmp 0x1020
+0x00000000000010a3 : cli ; push 7 ; jmp 0x1020
+0x00000000000010b3 : cli ; push 8 ; jmp 0x1020
+0x00000000000010c3 : cli ; push 9 ; jmp 0x1020
+0x0000000000001687 : cli ; sub rsp, 8 ; add rsp, 8 ; ret
+0x0000000000001003 : cli ; sub rsp, 8 ; mov rax, qword ptr [rip + 0x2fd9] ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001587 : cmp dword ptr [rbp - 4], eax ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x000000000000125f : cmp eax, edi ; je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x000000000000125e : cmp rax, rdi ; je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x000000000000158b : cwde ; nop ; nop ; leave ; ret
+0x0000000000001505 : dec ecx ; ret
+0x0000000000001300 : endbr64 ; jmp 0x1280
+0x0000000000001030 : endbr64 ; push 0 ; jmp 0x1020
+0x00000000000010d0 : endbr64 ; push 0xa ; jmp 0x1020
+0x00000000000010e0 : endbr64 ; push 0xb ; jmp 0x1020
+0x00000000000010f0 : endbr64 ; push 0xc ; jmp 0x1020
+0x0000000000001100 : endbr64 ; push 0xd ; jmp 0x1020
+0x0000000000001110 : endbr64 ; push 0xe ; jmp 0x1020
+0x0000000000001040 : endbr64 ; push 1 ; jmp 0x1020
+0x0000000000001050 : endbr64 ; push 2 ; jmp 0x1020
+0x0000000000001060 : endbr64 ; push 3 ; jmp 0x1020
+0x0000000000001070 : endbr64 ; push 4 ; jmp 0x1020
+0x0000000000001080 : endbr64 ; push 5 ; jmp 0x1020
+0x0000000000001090 : endbr64 ; push 6 ; jmp 0x1020
+0x00000000000010a0 : endbr64 ; push 7 ; jmp 0x1020
+0x00000000000010b0 : endbr64 ; push 8 ; jmp 0x1020
+0x00000000000010c0 : endbr64 ; push 9 ; jmp 0x1020
+0x0000000000001684 : endbr64 ; sub rsp, 8 ; add rsp, 8 ; ret
+0x000000000000100b : fldcw word ptr [rdi] ; add byte ptr [rax], al ; test rax, rax ; je 0x1016 ; call rax
+0x000000000000151a : in al, 0xc7 ; cld ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1581
+0x0000000000001512 : in al, dx ; and byte ptr [rax - 0x77], cl ; jge 0x1500 ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001006 : in al, dx ; or byte ptr [rax - 0x75], cl ; add eax, 0x2fd9 ; test rax, rax ; je 0x1016 ; call rax
+0x000000000000150f : in eax, 0x48 ; sub esp, 0x20 ; mov qword ptr [rbp - 0x18], rdi ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x00000000000012eb : inc esi ; add eax, 0x2d55 ; add dword ptr [rbp - 0x3d], ebx ; nop dword ptr [rax] ; ret
+0x0000000000001266 : jbe 0x1295 ; add byte ptr [rax], al ; test rax, rax ; je 0x1278 ; jmp rax
+0x0000000000001012 : je 0x1016 ; call rax
+0x000000000000126d : je 0x1278 ; jmp rax
+0x0000000000001261 : je 0x1278 ; mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x00000000000012ae : je 0x12b8 ; jmp rax
+0x00000000000012a2 : je 0x12b8 ; mov rax, qword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001516 : jge 0x1500 ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x000000000000158a : jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001039 : jmp 0x1020
+0x0000000000001049 : jmp 0x1020
+0x0000000000001059 : jmp 0x1020
+0x0000000000001069 : jmp 0x1020
+0x0000000000001079 : jmp 0x1020
+0x0000000000001089 : jmp 0x1020
+0x0000000000001099 : jmp 0x1020
+0x00000000000010a9 : jmp 0x1020
+0x00000000000010b9 : jmp 0x1020
+0x00000000000010c9 : jmp 0x1020
+0x00000000000010d9 : jmp 0x1020
+0x00000000000010e9 : jmp 0x1020
+0x00000000000010f9 : jmp 0x1020
+0x0000000000001109 : jmp 0x1020
+0x0000000000001119 : jmp 0x1020
+0x0000000000001304 : jmp 0x1280
+0x0000000000001522 : jmp 0x1581
+0x000000000000157b : jmp 0x158d
+0x00000000000015de : jmp 0x166d
+0x000000000000103d : jmp qword ptr [rsi - 0x70]
+0x000000000000104d : jmp qword ptr [rsi - 0x70]
+0x000000000000105d : jmp qword ptr [rsi - 0x70]
+0x000000000000106d : jmp qword ptr [rsi - 0x70]
+0x000000000000107d : jmp qword ptr [rsi - 0x70]
+0x000000000000108d : jmp qword ptr [rsi - 0x70]
+0x000000000000109d : jmp qword ptr [rsi - 0x70]
+0x00000000000010ad : jmp qword ptr [rsi - 0x70]
+0x00000000000010bd : jmp qword ptr [rsi - 0x70]
+0x00000000000010cd : jmp qword ptr [rsi - 0x70]
+0x00000000000010dd : jmp qword ptr [rsi - 0x70]
+0x00000000000010ed : jmp qword ptr [rsi - 0x70]
+0x00000000000010fd : jmp qword ptr [rsi - 0x70]
+0x000000000000110d : jmp qword ptr [rsi - 0x70]
+0x000000000000111d : jmp qword ptr [rsi - 0x70]
+0x000000000000126f : jmp rax
+0x00000000000012b0 : jmp rax
+0x0000000000001519 : jne 0x14ff ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001569 : jne 0x157d ; mov eax, dword ptr [rbp - 4] ; movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x000000000000141b : leave ; ret
+0x0000000000001506 : leave ; ret
+0x000000000000158e : leave ; ret
+0x00000000000012b1 : loopne 0x1319 ; nop dword ptr [rax + rax] ; ret
+0x0000000000001578 : mov byte ptr [rax], 0 ; jmp 0x158d
+0x00000000000012ec : mov byte ptr [rip + 0x2d55], 1 ; pop rbp ; ret
+0x00000000000015d4 : mov dword ptr [rbp - 0x114], 0 ; jmp 0x166d
+0x0000000000001515 : mov dword ptr [rbp - 0x18], edi ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001518 : mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x000000000000151b : mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001572 : mov eax, dword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x0000000000001581 : mov eax, dword ptr [rbp - 0x1c] ; sub eax, 1 ; cmp dword ptr [rbp - 4], eax ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x000000000000156b : mov eax, dword ptr [rbp - 4] ; movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x00000000000012a5 : mov eax, dword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001264 : mov eax, dword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x0000000000001009 : mov eax, dword ptr [rip + 0x2fd9] ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001514 : mov qword ptr [rbp - 0x18], rdi ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001571 : mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x00000000000012a4 : mov rax, qword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001263 : mov rax, qword ptr [rip + 0x2d76] ; test rax, rax ; je 0x1278 ; jmp rax
+0x0000000000001008 : mov rax, qword ptr [rip + 0x2fd9] ; test rax, rax ; je 0x1016 ; call rax
+0x000000000000107a : movabs byte ptr [0x1e0ff39066ffffff], al ; cli ; push 5 ; jmp 0x1020
+0x000000000000156e : movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x00000000000010cf : nop ; endbr64 ; push 0xa ; jmp 0x1020
+0x00000000000010ce : nop ; endbr64 ; push 0xa ; jmp 0x1020
+0x00000000000010df : nop ; endbr64 ; push 0xb ; jmp 0x1020
+0x00000000000010de : nop ; endbr64 ; push 0xb ; jmp 0x1020
+0x00000000000010ef : nop ; endbr64 ; push 0xc ; jmp 0x1020
+0x00000000000010ee : nop ; endbr64 ; push 0xc ; jmp 0x1020
+0x00000000000010ff : nop ; endbr64 ; push 0xd ; jmp 0x1020
+0x00000000000010fe : nop ; endbr64 ; push 0xd ; jmp 0x1020
+0x000000000000110f : nop ; endbr64 ; push 0xe ; jmp 0x1020
+0x000000000000110e : nop ; endbr64 ; push 0xe ; jmp 0x1020
+0x000000000000103f : nop ; endbr64 ; push 1 ; jmp 0x1020
+0x000000000000103e : nop ; endbr64 ; push 1 ; jmp 0x1020
+0x000000000000104f : nop ; endbr64 ; push 2 ; jmp 0x1020
+0x000000000000104e : nop ; endbr64 ; push 2 ; jmp 0x1020
+0x000000000000105f : nop ; endbr64 ; push 3 ; jmp 0x1020
+0x000000000000105e : nop ; endbr64 ; push 3 ; jmp 0x1020
+0x000000000000106f : nop ; endbr64 ; push 4 ; jmp 0x1020
+0x000000000000106e : nop ; endbr64 ; push 4 ; jmp 0x1020
+0x000000000000107f : nop ; endbr64 ; push 5 ; jmp 0x1020
+0x000000000000107e : nop ; endbr64 ; push 5 ; jmp 0x1020
+0x000000000000108f : nop ; endbr64 ; push 6 ; jmp 0x1020
+0x000000000000108e : nop ; endbr64 ; push 6 ; jmp 0x1020
+0x000000000000109f : nop ; endbr64 ; push 7 ; jmp 0x1020
+0x000000000000109e : nop ; endbr64 ; push 7 ; jmp 0x1020
+0x00000000000010af : nop ; endbr64 ; push 8 ; jmp 0x1020
+0x00000000000010ae : nop ; endbr64 ; push 8 ; jmp 0x1020
+0x00000000000010bf : nop ; endbr64 ; push 9 ; jmp 0x1020
+0x00000000000010be : nop ; endbr64 ; push 9 ; jmp 0x1020
+0x000000000000141a : nop ; leave ; ret
+0x000000000000158d : nop ; leave ; ret
+0x000000000000158c : nop ; nop ; leave ; ret
+0x00000000000012b3 : nop dword ptr [rax + rax] ; ret
+0x00000000000012f9 : nop dword ptr [rax] ; endbr64 ; jmp 0x1280
+0x000000000000102c : nop dword ptr [rax] ; endbr64 ; push 0 ; jmp 0x1020
+0x0000000000001271 : nop dword ptr [rax] ; ret
+0x00000000000012f5 : nop dword ptr [rax] ; ret
+0x00000000000012b2 : nop word ptr [rax + rax] ; ret
+0x00000000000010f5 : or al, 0 ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010d5 : or al, byte ptr [rax] ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000012af : or bh, bh ; loopne 0x1319 ; nop dword ptr [rax + rax] ; ret
+0x0000000000001007 : or byte ptr [rax - 0x75], cl ; add eax, 0x2fd9 ; test rax, rax ; je 0x1016 ; call rax
+0x00000000000010b5 : or byte ptr [rax], al ; add byte ptr [rax], al ; jmp 0x1020
+0x0000000000001568 : or dh, byte ptr [rbp + 0x12] ; mov eax, dword ptr [rbp - 4] ; movsxd rdx, eax ; mov rax, qword ptr [rbp - 0x18] ; add rax, rdx ; mov byte ptr [rax], 0 ; jmp 0x158d
+0x00000000000010c5 : or dword ptr [rax], eax ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000010e5 : or eax, dword ptr [rax] ; add byte ptr [rax], al ; jmp 0x1020
+0x00000000000012f3 : pop rbp ; ret
+0x0000000000001034 : push 0 ; jmp 0x1020
+0x00000000000010d4 : push 0xa ; jmp 0x1020
+0x00000000000010e4 : push 0xb ; jmp 0x1020
+0x00000000000010f4 : push 0xc ; jmp 0x1020
+0x0000000000001104 : push 0xd ; jmp 0x1020
+0x0000000000001114 : push 0xe ; jmp 0x1020
+0x0000000000001044 : push 1 ; jmp 0x1020
+0x0000000000001054 : push 2 ; jmp 0x1020
+0x0000000000001064 : push 3 ; jmp 0x1020
+0x0000000000001074 : push 4 ; jmp 0x1020
+0x0000000000001084 : push 5 ; jmp 0x1020
+0x0000000000001094 : push 6 ; jmp 0x1020
+0x00000000000010a4 : push 7 ; jmp 0x1020
+0x00000000000010b4 : push 8 ; jmp 0x1020
+0x00000000000010c4 : push 9 ; jmp 0x1020
+0x00000000000012ee : push rbp ; sub eax, 0x5d010000 ; ret
+0x000000000000101a : ret
+0x0000000000001278 : ret
+0x00000000000012b8 : ret
+0x00000000000012f4 : ret
+0x00000000000012f8 : ret
+0x000000000000141c : ret
+0x0000000000001507 : ret
+0x000000000000158f : ret
+0x0000000000001690 : ret
+0x000000000000105a : ret 0xffff
+0x0000000000001577 : rol dh, 1 ; add byte ptr [rax], al ; jmp 0x158d
+0x00000000000012ad : sal byte ptr [rax + rcx - 1], 0xe0 ; nop word ptr [rax + rax] ; ret
+0x000000000000126c : sal byte ptr [rcx + rcx - 1], 0xe0 ; nop dword ptr [rax] ; ret
+0x0000000000001011 : sal byte ptr [rdx + rax - 1], 0xd0 ; add rsp, 8 ; ret
+0x00000000000012a0 : sar esi, 1 ; je 0x12b8 ; mov rax, qword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x000000000000129f : sar rsi, 1 ; je 0x12b8 ; mov rax, qword ptr [rip + 0x2d45] ; test rax, rax ; je 0x12b8 ; jmp rax
+0x0000000000001028 : sub al, 0x2f ; add byte ptr [rax], al ; nop dword ptr [rax] ; endbr64 ; push 0 ; jmp 0x1020
+0x00000000000012ef : sub eax, 0x5d010000 ; ret
+0x00000000000012a8 : sub eax, 0x85480000 ; sal byte ptr [rax + rcx - 1], 0xe0 ; nop word ptr [rax + rax] ; ret
+0x00000000000012a7 : sub eax, 0x85480000 ; sal byte ptr [rax + rcx - 1], 0xe0 ; nop word ptr [rax + rax] ; ret
+0x0000000000001267 : sub eax, 0x85480000 ; sal byte ptr [rcx + rcx - 1], 0xe0 ; nop dword ptr [rax] ; ret
+0x0000000000001584 : sub eax, 1 ; cmp dword ptr [rbp - 4], eax ; jl 0x1524 ; nop ; nop ; leave ; ret
+0x0000000000001511 : sub esp, 0x20 ; mov qword ptr [rbp - 0x18], rdi ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001689 : sub esp, 8 ; add rsp, 8 ; ret
+0x0000000000001005 : sub esp, 8 ; mov rax, qword ptr [rip + 0x2fd9] ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001510 : sub rsp, 0x20 ; mov qword ptr [rbp - 0x18], rdi ; mov dword ptr [rbp - 0x1c], esi ; mov dword ptr [rbp - 4], 0 ; jmp 0x1581
+0x0000000000001688 : sub rsp, 8 ; add rsp, 8 ; ret
+0x0000000000001004 : sub rsp, 8 ; mov rax, qword ptr [rip + 0x2fd9] ; test rax, rax ; je 0x1016 ; call rax
+0x0000000000001010 : test eax, eax ; je 0x1016 ; call rax
+0x000000000000126b : test eax, eax ; je 0x1278 ; jmp rax
+0x00000000000012ac : test eax, eax ; je 0x12b8 ; jmp rax
+0x000000000000100f : test rax, rax ; je 0x1016 ; call rax
+0x000000000000126a : test rax, rax ; je 0x1278 ; jmp rax
+0x00000000000012ab : test rax, rax ; je 0x12b8 ; jmp rax
+
+Unique gadgets found: 291

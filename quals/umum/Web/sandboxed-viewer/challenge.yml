@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "sandboxed-viewer"
+author: "nyxmare"
+
+# support markdown & html tags
+description: |
+  Very strict sandbox
+
+  Start challenge from: https://{{.host}}/{{.slug}}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{sandbox_or_not_it_doesnt_matter_5f780b8b616e93c57e083b6aec80e575}"
+
+provide: "./dist"
+
+dashboard:
+  type: "compose"
+  config: "./challenge/docker-compose.yml"

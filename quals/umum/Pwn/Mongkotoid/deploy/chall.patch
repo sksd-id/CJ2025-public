@@ -1,0 +1,36 @@
+diff --git a/js/src/jit/MacroAssembler-inl.h b/js/src/jit/MacroAssembler-inl.h
+index eee6ab885627..987c0bea4bfc 100644
+--- a/js/src/jit/MacroAssembler-inl.h
++++ b/js/src/jit/MacroAssembler-inl.h
+@@ -877,10 +877,7 @@ void MacroAssembler::canonicalizeFloat(FloatRegister reg) {
+ }
+ 
+ void MacroAssembler::canonicalizeDouble(FloatRegister reg) {
+-  Label notNaN;
+-  branchDouble(DoubleOrdered, reg, reg, &notNaN);
+-  loadConstantDouble(JS::GenericNaN(), reg);
+-  bind(&notNaN);
++  return;
+ }
+ 
+ // ========================================================================
+@@ -936,15 +933,17 @@ void MacroAssembler::fallibleUnboxBigInt(const T& src, Register dest,
+ 
+ void MacroAssembler::ensureDouble(const ValueOperand& source,
+                                   FloatRegister dest, Label* failure) {
+-  Label isDouble, done;
++  Label isDouble, isInt32, done;
+ 
+   {
+     ScratchTagScope tag(*this, source);
+     splitTagForTest(source, tag);
+     branchTestDouble(Assembler::Equal, tag, &isDouble);
+-    branchTestInt32(Assembler::NotEqual, tag, failure);
++    branchTestInt32(Assembler::Equal, tag, &isInt32);
++    jump(&isDouble);
+   }
+ 
++  bind(&isInt32);
+   convertInt32ToDouble(source.payloadOrValueReg(), dest);
+   jump(&done);
+ 

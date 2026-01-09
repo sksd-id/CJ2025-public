@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "the absolute idol"
+author: "azuketto"
+
+# support markdown & html tags
+description: |
+  o7
+
+  https://www.youtube.com/watch?v=8iGGL_0CEpc
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CJ{https://www.youtube.com/watch?v=RZvfMYz4AuE&flag=c7d65876503bcb88}"
+
+provide: "./dist"
